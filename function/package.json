@@ -1,0 +1,71 @@
+{
+  "name": "get-builds-for-triggering-build-branch",
+  "version": "0.0.2",
+  "description": "Gets builds which were built from the same branch as the triggering build's branch.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "create": "cd .. && npx tfx-cli extension create && cd function",
+    "babel": "NODE_ENV=babel npx babel src/ --out-dir dist/",
+    "build": "rm -f ../*.vsix && npm i && npm test && npm run babel && npm prune --production && npm run create"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "azure-devops-node-api": "^7.0.0",
+    "azure-pipelines-task-lib": "^2.7.7"
+  },
+  "devDependencies": {
+    "eslint": "^5.10.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "jest": "^24.5.0",
+    "jest-runner-eslint": "^0.7.1"
+  },
+  "eslintConfig": {
+    "extends": "airbnb-base",
+    "rules": {
+      "no-console": "off"
+    }
+  },
+  "jest-runner-eslint": {
+    "cliOptions": {
+      "fix": true
+    }
+  },
+  "jest": {
+    "projects": [
+      {
+        "displayName": "test"
+      },
+      {
+        "displayName": "lint",
+        "runner": "jest-runner-eslint",
+        "testMatch": [
+          "<rootDir>/src/**/main.js",
+          "<rootDir>/tests/**/*.js"
+        ],
+        "watchPlugins": [
+          "jest-runner-eslint/watch-fix"
+        ]
+      }
+    ]
+  },
+  "babel": {
+    "env": {
+      "babel": {
+        "presets": [
+          [
+            "@babel/preset-env",
+            {
+              "targets": {
+                "node": "v6.10.3"
+              }
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

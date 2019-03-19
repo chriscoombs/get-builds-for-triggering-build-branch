@@ -1,0 +1,58 @@
+{
+    "manifestVersion": 1,
+    "id": "get-builds-for-triggering-build-branch",
+    "name": "Get Builds for Triggering Build Branch",
+    "description": "Gets builds which were built from the same branch as the triggering build's branch.",
+    "version": "0.0.2",
+    "publisher": "chriscoombs",
+    "targets": [{
+        "id": "Microsoft.VisualStudio.Services.Cloud"
+    }],
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"
+    },
+    "files": [{
+            "path": "function/dist/index.js",
+            "packagePath": "function/index.js"
+        },
+        {
+            "path": "function/dist/main.js",
+            "packagePath": "function/main.js"
+        },
+        {
+            "path": "function/task.json",
+            "packagePath": "function/task.json"
+        },
+        {
+            "path": "function/node_modules",
+            "packagePath": "function/node_modules"
+        },
+        {
+            "path": "images/oauth.png",
+            "packagePath": "images/oauth.png",
+            "addressable": true
+        }
+    ],
+    "contributions": [{
+        "id": "custom-build-release-task",
+        "type": "ms.vss-distributed-task.task",
+        "targets": [
+            "ms.vss-distributed-task.tasks"
+        ],
+        "properties": {
+            "name": "function"
+        }
+    }],
+    "content": {
+        "details": {
+            "path": "marketplace.md"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/chriscoombs/get-builds-for-triggering-build-branch"
+    }
+}
