@@ -1,6 +1,6 @@
 {
   "name": "get-builds-for-triggering-build-branch",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Gets builds which were built from the same branch as the triggering build's branch.",
   "main": "index.js",
   "scripts": {

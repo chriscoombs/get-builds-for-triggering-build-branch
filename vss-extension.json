@@ -3,7 +3,7 @@
     "id": "get-builds-for-triggering-build-branch",
     "name": "Get Builds for Triggering Build Branch",
     "description": "Gets builds which were built from the same branch as the triggering build's branch.",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "publisher": "chriscoombs",
     "targets": [{
         "id": "Microsoft.VisualStudio.Services.Cloud"
@@ -54,5 +54,6 @@
     "repository": {
         "type": "git",
         "uri": "https://github.com/chriscoombs/get-builds-for-triggering-build-branch"
-    }
+    },
+    "public": true
 }
